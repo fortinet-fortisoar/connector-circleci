@@ -129,7 +129,7 @@
         },
         {
           "title": "Fetch Data From",
-          "required": false,
+          "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
@@ -363,7 +363,7 @@
         },
         {
           "title": "Fetch Data From",
-          "required": false,
+          "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
