@@ -1,0 +1,419 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+      "@type": "WorkflowCollection",
+      "name": "Sample - CircleCI - 1.0.0",
+      "description": "CircleCI is the continuous integration & delivery platform that helps the development teams to release code rapidly and automate the build, test, and deploy. CircleCI can be configured to run very complex pipelines efficiently with caching, docker layer caching, resource classes and many more. After repositories on GitHub or Bitbucket are authorized and added as a project to circleci.com, every code triggers CircleCI runs jobs. CircleCI also sends an email notification of success or failure after the tests complete.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Circleci",
+        "circleci"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "bdd1f3cb-257d-4862-a78c-272ab167d229",
+          "collection": "/api/3/workflow_collections/f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+          "triggerLimit": null,
+          "description": "Retrieves summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours",
+          "name": "Get Workflows List",
+          "tag": "#CircleCI",
+          "recordTags": [
+            "Circleci",
+            "circleci"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/65bae84d-7d08-42f5-800d-861f12c103d0",
+          "steps": [
+            {
+              "uuid": "65bae84d-7d08-42f5-800d-861f12c103d0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e4f2f6e5-7ddc-4963-8e6a-9ba268a6ee43",
+                "title": "CircleCI: Get Workflows List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7897dff1-76f0-4c6a-b187-345d031f5db4",
+              "@type": "WorkflowStep",
+              "name": "Get Workflows List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CircleCI",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "circleci",
+                "operation": "get_workflows_list",
+                "operationTitle": "Get Workflows List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c006e9a1-12ce-43c3-b0ad-6279dce8c975",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Workflows List",
+              "sourceStep": "/api/3/workflow_steps/65bae84d-7d08-42f5-800d-861f12c103d0",
+              "targetStep": "/api/3/workflow_steps/7897dff1-76f0-4c6a-b187-345d031f5db4"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6ca7cb98-eb19-499a-a09b-a3d9f22ed556",
+          "collection": "/api/3/workflow_collections/f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+          "triggerLimit": null,
+          "description": "Retrieves the artifacts list from the CircleCI job based on the job number provided.",
+          "name": "Get Artifacts List",
+          "tag": "#CircleCI",
+          "recordTags": [
+            "Circleci",
+            "circleci"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/81048c38-e362-4512-9420-e7dcbdff1f49",
+          "steps": [
+            {
+              "uuid": "81048c38-e362-4512-9420-e7dcbdff1f49",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e512f49b-6d89-4568-aa41-74377cc0eb67",
+                "title": "CircleCI: Get Artifacts List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ec85924f-2a1e-49b1-8635-a08ef722446c",
+              "@type": "WorkflowStep",
+              "name": "Get Artifacts List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CircleCI",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "circleci",
+                "operation": "get_artifacts_list",
+                "operationTitle": "Get Artifacts List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0c72b705-956f-4141-9148-0e9891440b7d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Artifacts List",
+              "sourceStep": "/api/3/workflow_steps/81048c38-e362-4512-9420-e7dcbdff1f49",
+              "targetStep": "/api/3/workflow_steps/ec85924f-2a1e-49b1-8635-a08ef722446c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "107b3a45-44f1-4f30-b48f-7388d092afac",
+          "collection": "/api/3/workflow_collections/f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+          "triggerLimit": null,
+          "description": "Retrieves the jobs list from the CircleCI workflow based on the id of the workflow provided.",
+          "name": "Get Workflow Jobs List",
+          "tag": "#CircleCI",
+          "recordTags": [
+            "Circleci",
+            "circleci"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d720ea48-b335-4c64-9b8b-1e7eb19135d2",
+          "steps": [
+            {
+              "uuid": "d720ea48-b335-4c64-9b8b-1e7eb19135d2",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "0ecf322e-bb4c-4191-ba6e-15ab4084eab5",
+                "title": "CircleCI: Get Workflow Jobs List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ca664632-499a-43a4-a0d2-2ece0e8ac97f",
+              "@type": "WorkflowStep",
+              "name": "Get Workflow Jobs List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CircleCI",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "circleci",
+                "operation": "get_workflow_jobs_list",
+                "operationTitle": "Get Workflow Jobs List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "cf2316d0-46d4-45ba-81a1-dc24c4cb4837",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Workflow Jobs List",
+              "sourceStep": "/api/3/workflow_steps/d720ea48-b335-4c64-9b8b-1e7eb19135d2",
+              "targetStep": "/api/3/workflow_steps/ca664632-499a-43a4-a0d2-2ece0e8ac97f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0c24a37d-e679-492a-8dd4-b1a7d6c5d08e",
+          "collection": "/api/3/workflow_collections/f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+          "triggerLimit": null,
+          "description": "Retrieves the recent runs of a workflow based on the workflow name provided. Runs going back at most 90 days are returned.",
+          "name": "Get Workflow Last Runs",
+          "tag": "#CircleCI",
+          "recordTags": [
+            "Circleci",
+            "circleci"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a216bb2f-0adc-480e-b102-3ae40169f858",
+          "steps": [
+            {
+              "uuid": "a216bb2f-0adc-480e-b102-3ae40169f858",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "22f390e6-3db3-4c3e-89d2-640c76dfb26a",
+                "title": "CircleCI: Get Workflow Last Runs",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c9debf01-d4fd-463a-be6d-1970e3d24496",
+              "@type": "WorkflowStep",
+              "name": "Get Workflow Last Runs",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CircleCI",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "circleci",
+                "operation": "get_workflow_last_runs",
+                "operationTitle": "Get Workflow Last Runs",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "2502657e-84dc-4a14-ba1c-210ffb4db275",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Workflow Last Runs",
+              "sourceStep": "/api/3/workflow_steps/a216bb2f-0adc-480e-b102-3ae40169f858",
+              "targetStep": "/api/3/workflow_steps/c9debf01-d4fd-463a-be6d-1970e3d24496"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "08f7f7e0-5923-421a-8de0-98d4896bde01",
+          "collection": "/api/3/workflow_collections/f7e0c2ef-00e6-488e-aca6-fda4535b0467",
+          "triggerLimit": null,
+          "description": "Triggers a new pipeline on the project.",
+          "name": "Trigger Workflow",
+          "tag": "#CircleCI",
+          "recordTags": [
+            "Circleci",
+            "circleci"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6531ce74-ce0a-401f-844d-8e38a09c8d72",
+          "steps": [
+            {
+              "uuid": "6531ce74-ce0a-401f-844d-8e38a09c8d72",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "dce0a7ae-23e2-4823-8ad8-2233f581b16d",
+                "title": "CircleCI: Trigger Workflow",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ba7bf754-146e-4a05-b87f-edfc01c238b8",
+              "@type": "WorkflowStep",
+              "name": "Trigger Workflow",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "CircleCI",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "circleci",
+                "operation": "trigger_workflow",
+                "operationTitle": "Trigger Workflow",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "6c672f96-7dca-4ba2-a318-52f0c6bfeff0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Trigger Workflow",
+              "sourceStep": "/api/3/workflow_steps/6531ce74-ce0a-401f-844d-8e38a09c8d72",
+              "targetStep": "/api/3/workflow_steps/ba7bf754-146e-4a05-b87f-edfc01c238b8"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

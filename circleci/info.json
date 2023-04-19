@@ -1,0 +1,490 @@
+{
+  "name": "circleci",
+  "label": "CircleCI",
+  "version": "1.0.0",
+  "description": "CircleCI is the continuous integration & delivery platform that helps the development teams to release code rapidly and automate the build, test, and deploy. CircleCI can be configured to run very complex pipelines efficiently with caching, docker layer caching, resource classes and many more. After repositories on GitHub or Bitbucket are authorized and added as a project to circleci.com, every code triggers CircleCI runs jobs. CircleCI also sends an email notification of success or failure after the tests complete.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "category": "DevOps and Digital Operations",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "value": "https://circleci.com",
+        "description": "URL of the CircleCI server to which you will connect and perform the automated operations.",
+        "name": "server_url"
+      },
+      {
+        "title": "API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "description": "Specify the API Key used to access the CircleCI APIs and perform automated operations.",
+        "name": "api_key"
+      },
+      {
+        "title": "Version Control System Type",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "select",
+        "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+        "name": "vc_type",
+        "options": [
+          "Github",
+          "Bitbucket"
+        ]
+      },
+      {
+        "title": "Organization Name",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "description": "organization is your username or organization name in your version control system.",
+        "tooltip": "organization is your username or organization name in your version control system.",
+        "name": "organization"
+      },
+      {
+        "title": "Project Name",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "description": "Specify the name of the project in your Version Control System",
+        "tooltip": "Specify the name of the project in your Version Control System",
+        "name": "project"
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Get Workflows List",
+      "description": "Retrieves summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours",
+      "operation": "get_workflows_list",
+      "category": "investigation",
+      "annotation": "get_workflows_list",
+      "parameters": [
+        {
+          "title": "Version Control System Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "name": "vc_type",
+          "options": [
+            "Github",
+            "Bitbucket"
+          ]
+        },
+        {
+          "title": "Organization Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "organization is your username or organization name in your version control system.",
+          "tooltip": "organization is your username or organization name in your version control system.",
+          "name": "organization"
+        },
+        {
+          "title": "Project Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the name of the project in your Version Control System",
+          "tooltip": "Specify the name of the project in your Version Control System",
+          "name": "project"
+        },
+        {
+          "title": "Page Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the token to retrieve the next page of results.",
+          "tooltip": "Specify the token to retrieve the next page of results.",
+          "name": "page-token"
+        },
+        {
+          "title": "Fetch Data From",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify from where to fetch data, available options available are Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
+          "name": "branch_name",
+          "options": [
+            "Retrieve Data From All Branches",
+            "Retrieve Data From A Specific Branch"
+          ],
+          "onchange": {
+            "Retrieve Data From All Branches": [],
+            "Retrieve Data From A Specific Branch": [
+              {
+                "title": "Branch Name",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "description": "The name of a vcs branch. If not passed default branch will be used.",
+                "tooltip": "The name of a vcs branch. If not passed default branch will be used.",
+                "name": "branch"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Reporting Window",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify the time window to calculate summary metrics.",
+          "tooltip": "Specify the time window to calculate summary metrics.",
+          "name": "reporting-window",
+          "options": [
+            "Last 24 hours",
+            "Last 7 days",
+            "Last 30 days",
+            "Last 60 days",
+            "Last 90 days"
+          ]
+        }
+      ],
+      "output_schema": {
+        "next_page_token": "",
+        "items": [
+          {
+            "name": "",
+            "metrics": {
+              "total_runs": "",
+              "successful_runs": "",
+              "mttr": "",
+              "total_credits_used": "",
+              "failed_runs": "",
+              "median_credits_used": "",
+              "success_rate": "",
+              "duration_metrics": {
+                "min": "",
+                "mean": "",
+                "median": "",
+                "p95": "",
+                "max": "",
+                "standard_deviation": "",
+                "total_duration": ""
+              },
+              "total_recoveries": "",
+              "throughput": ""
+            },
+            "window_start": "",
+            "window_end": "",
+            "project_id": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Artifacts List",
+      "description": "Retrieves the artifacts list from the CircleCI job based on the job number provided.",
+      "operation": "get_artifacts_list",
+      "category": "investigation",
+      "annotation": "get_artifacts_list",
+      "parameters": [
+        {
+          "title": "Job Number",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the job number to retrieve its artifacts",
+          "name": "job-number"
+        },
+        {
+          "title": "Version Control System Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "name": "vc_type",
+          "options": [
+            "Github",
+            "Bitbucket"
+          ]
+        },
+        {
+          "title": "Organization Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "organization is your username or organization name in your version control system.",
+          "tooltip": "organization is your username or organization name in your version control system.",
+          "name": "organization"
+        },
+        {
+          "title": "Project Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the name of the project in your Version Control System",
+          "tooltip": "Specify the name of the project in your Version Control System",
+          "name": "project"
+        }
+      ],
+      "output_schema": {
+        "items": [
+          {
+            "path": "",
+            "node_index": "",
+            "url": ""
+          }
+        ],
+        "next_page_token": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Workflow Jobs List",
+      "description": "Retrieves the jobs list from the CircleCI workflow based on the id of the workflow provided.",
+      "operation": "get_workflow_jobs_list",
+      "category": "investigation",
+      "annotation": "get_workflow_jobs_list",
+      "parameters": [
+        {
+          "title": "Workflow ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the workflow ID to retrieve its jobs",
+          "name": "id"
+        }
+      ],
+      "output_schema": {
+        "next_page_token": "",
+        "items": [
+          {
+            "dependencies": [],
+            "job_number": "",
+            "id": "",
+            "started_at": "",
+            "name": "",
+            "project_slug": "",
+            "status": "",
+            "type": "",
+            "stopped_at": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Workflow Last Runs",
+      "description": "Retrieves the recent runs of a workflow based on the workflow name provided. Runs going back at most 90 days are returned.",
+      "operation": "get_workflow_last_runs",
+      "category": "investigation",
+      "annotation": "get_workflow_last_runs",
+      "parameters": [
+        {
+          "title": "Workflow Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the name of the workflow from which to retrieve its last runs details.",
+          "name": "workflow-name"
+        },
+        {
+          "title": "Version Control System Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "name": "vc_type",
+          "options": [
+            "Github",
+            "Bitbucket"
+          ]
+        },
+        {
+          "title": "Organization Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "organization is your username or organization name in your version control system.",
+          "tooltip": "organization is your username or organization name in your version control system.",
+          "name": "organization"
+        },
+        {
+          "title": "Project Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the name of the project in your Version Control System",
+          "tooltip": "Specify the name of the project in your Version Control System",
+          "name": "project"
+        },
+        {
+          "title": "Page Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the token to retrieve the next page of results.",
+          "name": "page-token"
+        },
+        {
+          "title": "Fetch Data From",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify from where to fetch data, available options available are Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
+          "name": "branch_name",
+          "options": [
+            "Retrieve Data From All Branches",
+            "Retrieve Data From A Specific Branch"
+          ],
+          "onchange": {
+            "Retrieve Data From All Branches": [],
+            "Retrieve Data From A Specific Branch": [
+              {
+                "title": "Branch Name",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "description": "The name of a vcs branch. If not passed default branch will be used.",
+                "tooltip": "The name of a vcs branch. If not passed default branch will be used.",
+                "name": "branch"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Start Date",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
+          "tooltip": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
+          "name": "start-date"
+        },
+        {
+          "title": "End Date",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
+          "tooltip": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
+          "name": "end-date"
+        }
+      ],
+      "output_schema": {
+        "next_page_token": "",
+        "items": [
+          {
+            "id": "",
+            "duration": "",
+            "status": "",
+            "created_at": "",
+            "stopped_at": "",
+            "credits_used": "",
+            "branch": "",
+            "is_approval": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Trigger Workflow",
+      "description": "Triggers a new pipeline on the project.",
+      "operation": "trigger_workflow",
+      "category": "investigation",
+      "annotation": "trigger_workflow",
+      "parameters": [
+        {
+          "title": "Version Control System Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "name": "vc_type",
+          "options": [
+            "Github",
+            "Bitbucket"
+          ]
+        },
+        {
+          "title": "Organization Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "organization is your username or organization name in your version control system.",
+          "tooltip": "organization is your username or organization name in your version control system.",
+          "name": "organization"
+        },
+        {
+          "title": "Project Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the name of the project in your Version Control System",
+          "tooltip": "Specify the name of the project in your Version Control System",
+          "name": "project"
+        },
+        {
+          "title": "Parameters",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "description": "Specify An object containing pipeline parameters and their values.",
+          "tooltip": "Specify An object containing pipeline parameters and their values. Eg: {\n   \"run_workflow_build\":true\n}",
+          "name": "parameters"
+        }
+      ],
+      "output_schema": {
+        "number": "",
+        "state": "",
+        "id": "",
+        "created_at": ""
+      },
+      "enabled": true
+    }
+  ]
+}
