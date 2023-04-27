@@ -19,7 +19,10 @@ def make_api_call(method="GET", endpoint="", config=None, params=None, data=None
             "content-type": "application/json",
             'Circle-Token': config.get('api_key')
         }
-        url = config.get('server_url') + '/api/v2/' + endpoint
+        server_url = config.get('server_url')
+        if not server_url.startswith('https://') and not server_url.startswith('http://'):
+            server_url = "https://" + server_url
+        url = server_url + '/api/v2/' + endpoint
         response = requests.request(method=method, url=url,
                                     headers=headers, data=data, json=json_data, params=params,
                                     verify=config.get('verify_ssl'))
@@ -102,7 +105,9 @@ def trigger_workflow(config, params):
 
 def _check_health(config):
     try:
-        make_api_call(endpoint='me', config=config)
+        params = {}
+        params['branch_name'] = "Retrieve Data From All Branches"
+        get_workflows_list(config, params)
         return True
     except Exception as e:
         logger.error("Invalid Credentials: %s" % str(e))
