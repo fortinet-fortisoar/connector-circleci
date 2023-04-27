@@ -9,7 +9,7 @@
   "category": "DevOps and Digital Operations",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/circleci/569/circleci-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -37,7 +37,7 @@
         "editable": true,
         "visible": true,
         "type": "select",
-        "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+        "description": "Specify the version control system, you can choose between Github and Bitbucket.",
         "name": "vc_type",
         "options": [
           "Github",
@@ -79,7 +79,7 @@
   "operations": [
     {
       "title": "Get Workflows List",
-      "description": "Retrieves summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours",
+      "description": "Retrieves summary metrics for a project's workflows. The workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours",
       "operation": "get_workflows_list",
       "category": "investigation",
       "annotation": "get_workflows_list",
@@ -90,7 +90,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "description": "Specify the version control system to use for getting the workflows list. You can choose between GitHub and Bitbucket.",
           "name": "vc_type",
           "options": [
             "Github",
@@ -103,7 +103,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "organization is your username or organization name in your version control system.",
+          "description": "Specify your username or organization's name in your version control system.",
           "tooltip": "organization is your username or organization name in your version control system.",
           "name": "organization"
         },
@@ -133,7 +133,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify from where to fetch data, available options available are Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
+          "description": "Select the sources from where to fetch data. You can select from the following available options: Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
           "name": "branch_name",
           "options": [
             "Retrieve Data From All Branches",
@@ -148,7 +148,7 @@
                 "editable": true,
                 "visible": true,
                 "type": "text",
-                "description": "The name of a vcs branch. If not passed default branch will be used.",
+                "description": "Specify the branch of the version control system from which to fetch data. If left blank, the branch specified as default in the repository is used.",
                 "tooltip": "The name of a vcs branch. If not passed default branch will be used.",
                 "name": "branch"
               }
@@ -161,8 +161,8 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify the time window to calculate summary metrics.",
-          "tooltip": "Specify the time window to calculate summary metrics.",
+          "description": "Select a time window to calculate summary metrics.",
+          "tooltip": "Select the time window to calculate summary metrics.",
           "name": "reporting-window",
           "options": [
             "Last 24 hours",
@@ -228,7 +228,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "description": "Specify the version control system to use for getting the artifacts list. You can choose between GitHub and Bitbucket. ",
           "name": "vc_type",
           "options": [
             "Github",
@@ -241,7 +241,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "organization is your username or organization name in your version control system.",
+          "description": "Specify your username or organization's name in your version control system. ",
           "tooltip": "organization is your username or organization name in your version control system.",
           "name": "organization"
         },
@@ -270,7 +270,7 @@
     },
     {
       "title": "Get Workflow Jobs List",
-      "description": "Retrieves the jobs list from the CircleCI workflow based on the id of the workflow provided.",
+      "description": "Retrieves the jobs list from the CircleCI workflow based on the ID of the workflow provided.",
       "operation": "get_workflow_jobs_list",
       "category": "investigation",
       "annotation": "get_workflow_jobs_list",
@@ -325,7 +325,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "description": "Specify the version control system to use for getting workflows' last runs. You can choose between GitHub and Bitbucket. ",
           "name": "vc_type",
           "options": [
             "Github",
@@ -338,7 +338,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "organization is your username or organization name in your version control system.",
+          "description": "Specify your username or organization's name in your version control system. ",
           "tooltip": "organization is your username or organization name in your version control system.",
           "name": "organization"
         },
@@ -367,7 +367,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify from where to fetch data, available options available are Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
+          "description": "Select the sources from where to fetch data. You can select from the following available options: Retrieve Data From All Branches and Retrieve Data From A Specific Branch.",
           "name": "branch_name",
           "options": [
             "Retrieve Data From All Branches",
@@ -382,7 +382,7 @@
                 "editable": true,
                 "visible": true,
                 "type": "text",
-                "description": "The name of a vcs branch. If not passed default branch will be used.",
+                "description": "Specify the branch of the version control system from which to fetch data. If left blank, the branch specified as default in the repository is used.",
                 "tooltip": "The name of a vcs branch. If not passed default branch will be used.",
                 "name": "branch"
               }
@@ -395,7 +395,7 @@
           "editable": true,
           "visible": true,
           "type": "datetime",
-          "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
+          "description": "Select a start date to include only those executions that started on or after this date. This parameter must be specified if an end date is provided.",
           "tooltip": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
           "name": "start-date"
         },
@@ -405,7 +405,7 @@
           "editable": true,
           "visible": true,
           "type": "datetime",
-          "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
+          "description": "Select an end date to include only those executions that started before this date. This parameter cannot be later than 90 days after the selected start date.",
           "tooltip": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
           "name": "end-date"
         }
@@ -440,7 +440,7 @@
           "editable": true,
           "visible": true,
           "type": "select",
-          "description": "Specify the type version control system, you can choose between Github and Bitbucket.",
+          "description": "Specify the version control system to use for triggering workflows. You can choose between GitHub and Bitbucket. ",
           "name": "vc_type",
           "options": [
             "Github",
@@ -453,7 +453,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "organization is your username or organization name in your version control system.",
+          "description": "Specify your username or organization's name in your version control system.",
           "tooltip": "organization is your username or organization name in your version control system.",
           "name": "organization"
         },
@@ -473,7 +473,7 @@
           "editable": true,
           "visible": true,
           "type": "json",
-          "description": "Specify An object containing pipeline parameters and their values.",
+          "description": "Specify an object containing pipeline parameters and their values.",
           "tooltip": "Specify An object containing pipeline parameters and their values. Eg: {\n   \"run_workflow_build\":true\n}",
           "name": "parameters"
         }
